@@ -1,0 +1,269 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earth Explorer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.162.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.162.0/examples/jsm/"
+      }
+    }
+    </script>
+</head>
+<body>
+    <div class="min-h-screen bg-gray-900 text-white">
+        <!-- Hero Section -->
+        <header class="relative h-screen flex items-center justify-center">
+            <div class="absolute inset-0 overflow-hidden">
+                <img
+                    src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=2000"
+                    alt="Space background"
+                    class="w-full h-full object-cover"
+                />
+                <div class="absolute inset-0 bg-black opacity-50"></div>
+            </div>
+            <div class="relative z-10 text-center">
+                <h1 class="text-6xl font-bold mb-4">Earth Explorer</h1>
+                <p class="text-xl">Discover our beautiful home planet</p>
+            </div>
+        </header>
+
+        <!-- Interactive Earth Section -->
+        <section class="py-20 bg-gray-800 relative">
+            <h2 class="text-4xl font-bold text-center mb-8">Interactive Earth Explorer</h2>
+            
+            <!-- Earth Info -->
+            <div class="max-w-4xl mx-auto px-4 mb-8 text-center">
+                <h3 class="text-2xl font-bold mb-2">Earth</h3>
+                <p class="text-gray-300">Our home planet, the only known planet to harbor life. Features a dynamic atmosphere and diverse ecosystems.</p>
+            </div>
+
+            <!-- Earth Viewer -->
+            <div id="planet-container" class="w-full h-[600px] bg-black"></div>
+        </section>
+
+        <!-- Photos of Planets Section -->
+        <section class="py-20 bg-gray-900">
+            <h2 class="text-4xl font-bold text-center mb-12">Photos of Planets</h2>
+            <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Mercury -->
+                <a href="https://solarsystem.nasa.gov/planets/mercury/" target="_blank" rel="noopener noreferrer" 
+                   class="bg-gray-800 rounded-lg overflow-hidden shadow-xl transform transition-transform hover:scale-105">
+                    <img 
+                        src="https://imgs.search.brave.com/d1fhOZa2Yv3nOn_xQGJmPWQsatn1wRwjsnnQ_0YHlJI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzA0Lzk3LzQyLzA0/LzM2MF9GXzQ5NzQy/MDQ1Nl83OVpqaDI4/TTE5cFdOQTIzTzhO/aDh0SmpkR1F3d2FR/Zi5qcGc"
+                        alt="Mercury"
+                        class="w-full h-64 object-cover"
+                    />
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Mercury</h3>
+                        <p class="text-gray-400">The smallest and innermost planet</p>
+                    </div>
+                </a>
+                <!-- Venus -->
+                <a href="https://solarsystem.nasa.gov/planets/venus/" target="_blank" rel="noopener noreferrer" 
+                   class="bg-gray-800 rounded-lg overflow-hidden shadow-xl transform transition-transform hover:scale-105">
+                    <img 
+                        src="https://imgs.search.brave.com/ocU25eVDOXmqr_EI44XJ2kDwpayEefnAup9zJHt6-yA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9oZWxp/b3MtaS5tYXNoYWJs/ZS5jb20vaW1hZ2Vy/eS9hcnRpY2xlcy8w/NmQ3aWxqSjhMb2wx/QkYyek5xMmlOZi9p/bWFnZXMtMi5maWxs/LnNpemVfMjAwMHgy/MDAwLnYxNjg3ODk1/NDE2LmpwZw"
+                        alt="Venus"
+                        class="w-full h-64 object-cover"
+                    />
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Venus</h3>
+                        <p class="text-gray-400">Earth's sister planet with extreme temperatures</p>
+                    </div>
+                </a>
+                
+                <!-- Earth -->
+                <a href="https://www.nasa.gov/earth/" target="_blank" rel="noopener noreferrer" 
+                   class="bg-gray-800 rounded-lg overflow-hidden shadow-xl transform transition-transform hover:scale-105">
+                    <img 
+                        src="https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?auto=format&fit=crop&w=800"
+                        alt="Earth from Space"
+                        class="w-full h-64 object-cover"
+                    />
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Earth</h3>
+                        <p class="text-gray-400">Our beautiful blue planet viewed from space</p>
+                    </div>
+                </a>
+
+                <!-- Mars -->
+                <a href="https://mars.nasa.gov/" target="_blank" rel="noopener noreferrer" 
+                   class="bg-gray-800 rounded-lg overflow-hidden shadow-xl transform transition-transform hover:scale-105">
+                    <img 
+                        src="https://images.unsplash.com/photo-1630839437035-dac17da580d0?auto=format&fit=crop&w=800"
+                        alt="Mars Surface"
+                        class="w-full h-64 object-cover"
+                    />
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Mars</h3>
+                        <p class="text-gray-400">The Red Planet - Earth's fascinating neighbor</p>
+                    </div>
+                </a>
+
+                <!-- Jupiter -->
+                <a href="https://solarsystem.nasa.gov/planets/jupiter/" target="_blank" rel="noopener noreferrer" 
+                   class="bg-gray-800 rounded-lg overflow-hidden shadow-xl transform transition-transform hover:scale-105">
+                    <img 
+                        src="https://imgs.search.brave.com/zegQdOi6GOzxf8TPYEQCr3XYiBAQAfkTaPZ1CWW20oY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS1jbGRucnkucy1u/YmNuZXdzLmNvbS9p/bWFnZS91cGxvYWQv/dF9maXQtNzYwdyxm/X2F1dG8scV9hdXRv/OmJlc3Qvcm9ja2Nt/cy8yMDIyLTA4LzIy/MDgyMi13ZWJiLWp1/cGl0ZXItaW1hZ2Vz/LXNob3djYXNlLWF1/cm9yYXMtaGF6ZXMt/bW4tMTE0MC0xMDAy/YzkucG5n"
+                        alt="Jupiter"
+                        class="w-full h-64 object-cover"
+                    />
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Jupiter</h3>
+                        <p class="text-gray-400">The largest planet in our solar system</p>
+                    </div>
+                </a>
+
+                <!-- Saturn -->
+                <a href="https://solarsystem.nasa.gov/planets/saturn/" target="_blank" rel="noopener noreferrer" 
+                   class="bg-gray-800 rounded-lg overflow-hidden shadow-xl transform transition-transform hover:scale-105">
+                    <img 
+                        src="https://imgs.search.brave.com/tJ8_x-ypj9yCe8-pEtYhQN5Wwoi6HUAc9DniHskkCZc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMtYXNzZXRzLm5h/c2EuZ292L2ltYWdl/L1BJQTAyMjI1L1BJ/QTAyMjI1fm9yaWcu/anBnP3c9OTAwJmg9/MTAwMCZmaXQ9Y2xp/cCZjcm9wPWZhY2Vz/LGZvY2FscG9pbnQ"
+                        alt="Saturn"
+                        class="w-full h-64 object-cover"
+                    />
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Saturn</h3>
+                        <p class="text-gray-400">Known for its spectacular ring system</p>
+                    </div>
+                </a>
+                <!-- Uranus -->
+                <a href="https://solarsystem.nasa.gov/planets/uranus/" target="_blank" rel="noopener noreferrer" 
+                class="bg-gray-800 rounded-lg overflow-hidden shadow-xl transform transition-transform hover:scale-105">
+                <img 
+     src="https://imgs.search.brave.com/H-936tCwspy20ZCpbWPz4OoOph5qt5w_WDoQYyors_Q/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLm5h/dGdlb2ZlLmNvbS9r/LzA1Y2I0ZDAzLTVh/N2YtNGNkMS04ZjZk/LTMwNjViM2I2OWM5/NC91cmFudXMtcGxh/bmV0LmpwZw"
+     alt="Uranus"
+     class="w-full h-64 object-cover"
+ />
+ <div class="p-6">
+     <h3 class="text-xl font-bold mb-2">Uranus</h3>
+     <p class="text-gray-400">An ice giant with a unique sideways rotation</p>
+ </div>
+</a>
+
+<!-- Neptune -->
+<a href="https://solarsystem.nasa.gov/planets/neptune/" target="_blank" rel="noopener noreferrer" 
+class="bg-gray-800 rounded-lg overflow-hidden shadow-xl transform transition-transform hover:scale-105">
+ <img 
+     src="https://imgs.search.brave.com/1-KZvQM3NrrrpdihO18EJ_TP1SQNgiKoz0BCBrrvdgY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zcGFj/ZS1mYWN0cy5jb20v/d3AtY29udGVudC91/cGxvYWRzL25lcHR1/bmUtdjIuanBn"
+     alt="Neptune"
+     class="w-full h-64 object-cover"
+ />
+ <div class="p-6">
+     <h3 class="text-xl font-bold mb-2">Neptune</h3>
+     <p class="text-gray-400">The windiest planet in the solar system</p>
+ </div>
+</a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-gray-900 text-center py-8">
+            <p>© 2024 Earth Explorer. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script type="module">
+        import * as THREE from 'three';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+        // Earth data
+        const earth = {
+            name: 'Earth',
+            description: 'Our home planet, the only known planet to harbor life. Features a dynamic atmosphere and diverse ecosystems.',
+            map: 'https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/textures/planets/earth_atmos_2048.jpg',
+            normalMap: 'https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/textures/planets/earth_normal_2048.jpg',
+            specularMap: 'https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/textures/planets/earth_specular_2048.jpg',
+            cloudsMap: 'https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/textures/planets/earth_clouds_1024.png',
+            size: 2,
+            rotationSpeed: 0.001
+        };
+
+        // Scene setup
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x000000);
+        
+        const container = document.getElementById('planet-container');
+        const camera = new THREE.PerspectiveCamera(45, container.offsetWidth / container.offsetHeight, 0.1, 1000);
+        camera.position.z = 5;
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(container.offsetWidth, container.offsetHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        container.appendChild(renderer.domElement);
+
+        // Lighting
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+        scene.add(ambientLight);
+
+        const pointLight1 = new THREE.PointLight(0xffffff, 5);
+        pointLight1.position.set(5, 3, 5);
+        scene.add(pointLight1);
+
+        const pointLight2 = new THREE.PointLight(0xffffff, 3);
+        pointLight2.position.set(-5, -3, 5);
+        scene.add(pointLight2);
+
+        // Controls
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableZoom = true;
+        controls.enablePan = true;
+        controls.enableRotate = true;
+        controls.zoomSpeed = 0.6;
+        controls.panSpeed = 0.5;
+        controls.rotateSpeed = 0.4;
+        controls.minDistance = 3;
+        controls.maxDistance = 20;
+
+        // Create Earth
+        const textureLoader = new THREE.TextureLoader();
+        const geometry = new THREE.SphereGeometry(earth.size, 128, 128);
+        const material = new THREE.MeshPhongMaterial({
+            map: textureLoader.load(earth.map),
+            normalMap: textureLoader.load(earth.normalMap),
+            specularMap: textureLoader.load(earth.specularMap),
+            shininess: 25,
+            emissive: new THREE.Color(0x112244),
+            emissiveIntensity: 0.1
+        });
+
+        const earthMesh = new THREE.Mesh(geometry, material);
+        scene.add(earthMesh);
+
+        // Add clouds
+        const cloudsGeometry = new THREE.SphereGeometry(earth.size + 0.005, 128, 128);
+        const cloudsMaterial = new THREE.MeshPhongMaterial({
+            map: textureLoader.load(earth.cloudsMap),
+            transparent: true,
+            opacity: 0.4
+        });
+        const cloudsMesh = new THREE.Mesh(cloudsGeometry, cloudsMaterial);
+        scene.add(cloudsMesh);
+
+        // Animation
+        function animate() {
+            requestAnimationFrame(animate);
+            earthMesh.rotation.y += earth.rotationSpeed;
+            cloudsMesh.rotation.y += earth.rotationSpeed * 0.8;
+            renderer.render(scene, camera);
+        }
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            const width = container.offsetWidth;
+            const height = container.offsetHeight;
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+            renderer.setSize(width, height);
+        });
+
+        animate();
+    </script>
+</body>
+</html>
